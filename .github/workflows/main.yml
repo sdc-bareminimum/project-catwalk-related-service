@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+env:
+  CI: true
+
+jobs:
+  CI:
+
+    environment: production_environment
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [14]
+        os: [ubuntu-latest]
+        database-name:
+        - postgres
+        database-password:
+        - example
+        database-user:
+        - postgres
+        database-host:
+        - 127.0.0.1
+        database-port:
+        - 5432
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: ${{ matrix.database-name }}
+          POSTGRES_USER: ${{ matrix.database-user }}
+          POSTGRES_PASSWORD: ${{ matrix.database-password }}
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: ♻️ Check out Git Repository
+      uses: actions/checkout@v2
+
+    - name: 🔖  Set up Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: ⬇️  Install npm dependencies
+      run: npm install
+
+    - name: Setup test database
+      env:
+        DATABASE_NAME_TEST: ${{ matrix.database-name }}
+        DATABASE_USER: ${{ matrix.database-user }}
+        DATABASE_PASSWORD: ${{ matrix.database-password }}
+        DATABASE_HOST: ${{ matrix.database-host }}
+        DATABASE_PORT: ${{ matrix.database-port }}
+        POSTGRES_DB: ${{ matrix.database-name }}
+      run: |
+        bundle exec rails db:migrate
+        bundle exec rails db:seed
+
+        
+    - name: Build the tagged Docker image
+      run: |-
+        docker build -t products .
+
+    - name: Start the Docker
+      run: |-
+        docker run \
+          --name postgres \
+          -e POSTGRES_PASSWORD=example \
+          -p 5432:5432 \
+          -d postgres
+
+    - name: ✅  Run tests
+      run: npm run test
