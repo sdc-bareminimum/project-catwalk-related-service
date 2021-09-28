@@ -12,7 +12,7 @@ env:
   CI: true
 
 jobs:
-  CI:
+  ci:
 
     environment: production_environment
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
@@ -74,7 +74,7 @@ jobs:
         bundle exec rails db:migrate
         bundle exec rails db:seed
 
-        
+
     - name: Build the tagged Docker image
       run: |-
         docker build -t products .
