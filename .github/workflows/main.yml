@@ -53,6 +53,7 @@ jobs:
     - name: ✅  Run tests
       env:
         POSTGRES_USER: ${{ matrix.database-user }}
+        DB_PASSWORD: ${{ matrix.database-password }}
         POSTGRES_PASSWORD: ${{ matrix.database-password }}
         DATABASE_HOST: ${{ matrix.database-host }}
         DATABASE_PORT: ${{ matrix.database-port }}
