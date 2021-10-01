@@ -41,11 +41,11 @@ jobs:
     - name: ♻️ Check out Git Repository
       uses: actions/checkout@v2
 
-    - name: 🐘 Configure Postgres
-      uses: ./Docker/
-      with:
-        postgresql password: example
-        postgresql init scripts: ../config
+    # - name: 🐘 Configure Postgres
+    #   uses: ./Docker/
+    #   with:
+    #     postgresql password: example
+    #     postgresql init scripts: ../config
 
     - name: 🔖  Set up Node
       uses: actions/setup-node@v1
