@@ -7,29 +7,26 @@
 		"dialect": "postgres",
 		"database": "sdi_api_development",
 		"models_path": "./app/models",
-		"migrations_path": "./app/migrations",
-		"use_env_variable": "DATABASE_URL"
+		"migrations_path": "./app/migrations"
 	},
 	"test": {
-		"username": "",
+		"username": "postgres",
 		"password": "example",
 		"host": "localhost",
 		"port": 5432,
 		"dialect": "postgres",
 		"database": "sdi_api_development",
 		"models_path": "./app/models",
-		"migrations_path": "./app/migrations",
-		"use_env_variable": "DATABASE_URL"
+		"migrations_path": "./app/migrations"
 	},
 	"production": {
-		"username": "",
+		"username": "postgres",
 		"password": "example",
 		"host": "localhost",
 		"port": 5432,
 		"database": "sdi_api_development",
 		"models_path": "./app/models",
 		"migrations_path": "./app/migrations",
-		"use_env_variable": "DATABASE_URL",
 		"dialect": "postgres",
 		"dialectOptions": {
 			"ssl": {
