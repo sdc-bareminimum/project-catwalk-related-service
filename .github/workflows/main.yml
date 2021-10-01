@@ -31,16 +31,32 @@ jobs:
         database-port:
         - 5432
 
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: example
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     name: Node ${{ matrix.node }} on ${{ matrix.os }}
     steps:
     - name: ♻️ Check out Git Repository
       uses: actions/checkout@v2
 
-    - name: 🐘 Configure Postgres
-      uses: ./Docker/
-      with:
-        postgresql password: example
-        postgresql init scripts: ../config
+    # - name: 🐘 Configure Postgres
+    #   uses: ./Docker/
+    #   with:
+    #     postgresql password: example
+    #     postgresql init scripts: ../config
 
     - name: 🔖  Set up Node
       uses: actions/setup-node@v1
