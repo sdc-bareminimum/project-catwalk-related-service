@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 // npm run sequelize init:migrations
 
