@@ -10,6 +10,11 @@ on:
 
 env:
   CI: true
+  POSTGRES_DB=postgres
+  POSTGRES_USER=postgres
+  POSTGRES_PASSWORD=example
+  POSTGRES_PORT=5432
+  POSTGRES_HOST=127.0.0.1
 
 jobs:
 
@@ -52,8 +57,8 @@ jobs:
 
     - name: ✅  Run tests
       env:
+        DATABASE_URL: 'postgresql://${{ env.POSTGRES_USER }}:${{ env.POSTGRES_PASSWORD }}@${{ env.POSTGRES_HOST }}:${{env.POSTGRES_PORT}}/${{env.POSTGRES_DB}}'
         POSTGRES_USER: ${{ matrix.database-user }}
-        DB_PASSWORD: ${{ matrix.database-password }}
         POSTGRES_PASSWORD: ${{ matrix.database-password }}
         DATABASE_HOST: ${{ matrix.database-host }}
         DATABASE_PORT: ${{ matrix.database-port }}
