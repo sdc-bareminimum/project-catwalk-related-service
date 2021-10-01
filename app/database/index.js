@@ -4,6 +4,10 @@ const { Pool } = require('pg');
 const dbConfig = require('../../config/db.config');
 const modelInitializer = require('./models/init-models');
 
+if (!dbConfig.password) {
+  throw new Error('MISSING database configuration settings!');
+}
+
 const sequelize = new Sequelize(
   dbConfig.database,
   dbConfig.user,
