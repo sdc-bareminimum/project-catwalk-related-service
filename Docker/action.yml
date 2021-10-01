@@ -4,6 +4,13 @@ author: 'Harmon'
 branding:
   icon: 'database'
   color: 'blue'
+env:
+  POSTGRES_DB: 'postgres'
+  DB_PASSWORD: 'example'
+  POSTGRES_USER: 'postgres'
+  POSTGRES_PASSWORD: 'example'
+  DATABASE_PORT: 5432
+  DATABASE_HOST: 127.0.0.1
 inputs:
   # See https://hub.docker.com/_/postgres for supported versions
   # and further details on input environment variables

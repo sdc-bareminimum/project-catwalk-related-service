@@ -11,6 +11,10 @@ ${process.env.DATABASE_HOST}:\
 ${process.env.DATABASE_PORT}/\
 ${process.env.POSTGRES_DB}`;
 
+if (!process.env.POSTGRES_USER) {
+  throw new Error('MISSING database configuration settings!');
+}
+
 module.exports = {
   database: process.env.POSTGRES_DB,
   user: process.env.POSTGRES_USER,
