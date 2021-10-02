@@ -22,6 +22,12 @@ module.exports = {
 		dialect: 'postgres',
 		models_path: './app/models',
 		migrations_path: './app/migrations',
+		dialectOptions: {
+			ssl: {
+				require: true,
+				rejectUnauthorized: false,
+			},
+		},
 	},
 	production: {
 		url: process.env.DATABASE_URL,
