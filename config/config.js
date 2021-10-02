@@ -13,7 +13,7 @@ module.exports = {
 		migrations_path: './app/migrations',
 	},
 	test: {
-		url: process.env.DATABASE_URL,
+		url: 'postgresql://postgres:postgres@127.0.0.1:5432/postgres',
 		// username: 'postgres',
 		// password: 'example',
 		// host: 'localhost',

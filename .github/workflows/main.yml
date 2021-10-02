@@ -40,7 +40,9 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
-          POSTGRES_PASSWORD: example
+          POSTGRES_PASSWORD: postgres
+          POSTGRESS_DB: postgres
+          POSTGRES_USER: postgres
         ports:
           - 5432:5432
         # Set health checks to wait until postgres has started
