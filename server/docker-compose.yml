@@ -7,11 +7,9 @@ services:
   server:
     build: .
     environment:
-      DATABASE_URL: postgres://docker:123456@127.0.0.1:5432/docker
+      DATABASE_URL: postgres://docker:docker@localhost:5432/docker
       NODE_ENV: development
       PORT: 3000
     ports:
       - "3000:3000"
     command: npm run dev
-    volumes:
-      - /node_modules
