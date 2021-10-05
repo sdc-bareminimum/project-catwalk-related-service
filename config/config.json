@@ -22,7 +22,7 @@
   "production": {
     "username": "postgres",
     "password": "postgres",
-    "host": "0.0.0.0",
+    "host": "db",
     "port": 5432,
     "database": "postgres",
     "models_path": "./app/database/models",
