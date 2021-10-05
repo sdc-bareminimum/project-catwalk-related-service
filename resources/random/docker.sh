@@ -1,3 +1,5 @@
+docker run -p 3000:3000 spencerlepine/project-atelier
+
 # PostgreSQL Connection String
 # postgres://<POSTGRES_USER>:<POSTGRES_PASSWORD>@<DATABASE_HOST>:<DATABASE_PORT>/<POSTGRES_DB>
 # postgres://docker:123456@db:5432/docker
@@ -41,7 +43,6 @@ docker stop <CONTAINER ID> -t 0 # Stop the container
 docker rm <CONTAINER ID> # delete the container
 docker images # list the images
 docker rmi <IMAGE ID> # remove the image
-
 
 $ docker build . -t ec2-app
 $ docker run -p 3000:3000 ec2-app
