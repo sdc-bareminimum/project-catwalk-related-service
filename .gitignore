@@ -1,5 +1,4 @@
 # Secret Docker Files
-Dockerfile
 docker-compose.yml
 docker.sh
 data

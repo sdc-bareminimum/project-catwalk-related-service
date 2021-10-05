@@ -7,7 +7,7 @@ services:
   server:
     build: .
     depends_on:
-      - postgres
+      - db
     environment:
       DATABASE_URL: postgresql://example:1234@db:5432/postgres_db
       NODE_ENV: development
@@ -16,7 +16,6 @@ services:
       - "3000:3000"
     command: npm run dev
     volumes:
-      - .:/
       - /node_modules
 
   db:
