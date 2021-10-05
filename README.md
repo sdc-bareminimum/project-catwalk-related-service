@@ -28,8 +28,8 @@ This project includes an Express app that connects to a PostgreSQL database. The
 ## Setup:
 
 ```sh
+$ cd server
 $ cp .env.sample .env
-$ cp docker-compose.yml.sample docker-compose.yml
 $ npm install
 # Build or Rebuild the Docker Container
 $ docker-compose up --build -d
@@ -49,7 +49,8 @@ $ npm run test:db:connection
 
 ## More Tools
 
-- [k6](https://k6.io/)
+- Run [k6](https://k6.io/) tests:
+  `$ sh resources/k6-tests/load-test.sh`
 
 ---
 
