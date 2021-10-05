@@ -6,10 +6,8 @@ version: "3"
 services:
   server:
     build: .
-    depends_on:
-      - db
     environment:
-      DATABASE_URL: postgres://docker:123456@db:5432/docker
+      DATABASE_URL: postgres://docker:123456@127.0.0.1:5432/docker
       NODE_ENV: development
       PORT: 3000
     ports:
@@ -17,11 +15,3 @@ services:
     command: npm run dev
     volumes:
       - /node_modules
-
-  db:
-    image: postgres:10.4
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: 123456

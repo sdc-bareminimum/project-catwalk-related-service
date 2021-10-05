@@ -1,4 +1,12 @@
+cd server
+docker build . -t project-atelier
+# docker tag project-atelier spencerlepine/project-atelier
+docker push spencerlepine/project-atelier
+# docker tag project-atelier
+# on EC2
 docker run -p 3000:3000 spencerlepine/project-atelier
+docker commit f4215572e452 spencerlepine/project-atelier
+docker push spencerlepine/project-atelier
 
 # PostgreSQL Connection String
 # postgres://<POSTGRES_USER>:<POSTGRES_PASSWORD>@<DATABASE_HOST>:<DATABASE_PORT>/<POSTGRES_DB>
