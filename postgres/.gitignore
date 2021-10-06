@@ -1,3 +1,4 @@
-fill_tables.sql
+backup.sql
+*.large.sql
 .DS_Store
-postgres-data/*
+data/

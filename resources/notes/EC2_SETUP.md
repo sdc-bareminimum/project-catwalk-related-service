@@ -15,3 +15,11 @@ https://betterprogramming.pub/containerize-node-react-postgres-with-docker-on-aw
 `sudo apt-get install docker.io`
 `docker --version`
 `sudo usermod -a -G docker ${USER}` # don't have to run docker with "sudo docker ..."
+`sudo docker pull spencerlepine/project-atelier:latest`
+`sudo docker run -p 3000:3000 spencerlepine/project-atelier`
+
+<!-- sudo docker pull spencerlepine/sdc-postgres:latest -->
+<!-- sudo docker run -p 5400:5432 spencerlepine/sdc-postgres:latest -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -e POSTGRES_HOST_AUTH_METHOD=trust -->
+
+<!-- docker inspect pg-docker
+docker network ls -->

@@ -3,6 +3,12 @@
 --
 -- ---
 
+-- DROP DATABASE IF EXISTS sdc;
+
+-- CREATE DATABASE sdc;
+
+-- \c sdc;
+
 DROP TABLE IF EXISTS "product" CASCADE;
 
 CREATE TABLE "product" (

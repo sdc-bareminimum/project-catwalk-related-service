@@ -40,10 +40,10 @@ docker system prune
 # docker exec -it $(docker-compose ps -q db ) psql -U docker -d docker < csv_data/backup.sql
 
 # Print the Postgres data INSIDE the docker container:
-docker exec -it $(docker-compose ps -q db ) psql -U docker -d docker -c '\z'
+docker exec -it $(docker-compose ps -q postgres ) psql -U docker -d docker -c '\z'
 
 # Copy the SQL backup file
-cat ./csv_data/backup.sql | docker exec -i project-catwalk-related-service_db_1 psql -U docker -d docker
+cat ./sql/backup.sql | docker exec -i $(docker-compose ps -q postgres ) psql -U docker -d docker
 
 # Other Commands:
 docker ps # list the containers
