@@ -3,14 +3,14 @@ services:
     nodeserver:
         build:
             context: ./app
-        environment:
-          DATABASE_URL: postgresql://ubuntu:HRdb@2021@54.218.13.73:5432/ubuntu
-          NODE_ENV: development
         ports:
             - "3000:3000"
+        image: spencerlepine/node-server
+
     nginx:
         restart: always
         build:
             context: ./nginx
         ports:
             - "80:80"
+        image: spencerlepine/sdc-nginx

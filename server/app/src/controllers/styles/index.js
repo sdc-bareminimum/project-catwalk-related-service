@@ -1,63 +1,38 @@
 const { style: Styles, photos: Photos, skus: Skus } = require('../../database');
 
-const transformSkuList = (sequelizeQueryResult) => {
-  try {
-    return sequelizeQueryResult
-      .map((e) => e.dataValues)
-      .reduce(
-        (outputObj, { size, quantity, id }) => ({
-          ...outputObj,
-          [id]: { size, quantity },
-        }),
-        {},
-      );
-  } catch (err) {
-    console.log(err);
-    return {};
-  }
-};
-
 const fetchStylesById = async (req, res) => {
   const { product_id: id } = req.params;
+
   Styles.findAll({
     where: { id },
+    attributes: { exclude: ['id'] },
+    include: [
+      {
+        model: Photos,
+        as: 'photos',
+        where: {},
+        attributes: { exclude: ['id', 'style_id'] },
+        separate: true,
+      },
+      {
+        model: Skus,
+        as: 'skus',
+        where: {},
+        attributes: { exclude: ['id', 'style_id'] },
+        separate: true,
+      },
+    ],
+    raw: false,
+    plain: false,
+    hasJoin: true,
+    nest: true,
   })
-    .then((styleList) => Promise.all(
-      styleList.map(({ dataValues: styleObj }) => {
-        // Get ALL the photos for this style_id
-        const stylePhotosPromise = Photos.findAll({
-          where: {
-            style_id: styleObj.id,
-          },
-          attributes: ['thumbnail_url', 'url'],
-        });
-
-        // Get ALL the skus for this style_id
-        const styleSkusPromise = Skus.findAll({
-          where: {
-            style_id: styleObj.id,
-          },
-        });
-        console.log(styleObj.id);
-
-        return Promise.all([stylePhotosPromise, styleSkusPromise]).then(
-          (promiseResults) => {
-            const [photos, skus] = promiseResults;
-            const transformedPhotos = photos.map((e) => e.dataValues);
-
-            return {
-              ...styleObj,
-              'default?': !!styleObj['default?'],
-              style_id: styleObj.id,
-              photos: transformedPhotos,
-              skus: transformSkuList(skus),
-            };
-          },
-        );
-      }),
-    ))
     .then((completeStyleList) => {
-      res.status(200).json({ product_id: id, results: completeStyleList });
+      // Convert the 'default?' key to a boolean
+      const obj = completeStyleList[0].dataValues;
+      const defaultBool = !!completeStyleList[0].dataValues['default?'];
+      obj['default?'] = defaultBool;
+      res.status(200).json(obj);
     })
     .catch((error) => res.status(500).json({ error: error.message }));
 };
