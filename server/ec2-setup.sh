@@ -4,7 +4,6 @@ sudo apt-get install docker.io
 sudo docker pull spencerlepine/node-server
 sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
-
 # Restart the ubuntu Docker service
 sudo systemctl daemon-reload
 
@@ -33,6 +32,8 @@ docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t spencerle
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t spencerlepine/node-server --push .
 
 docker buildx build --platform linux/amd64,linux/arm64 -t spencerlepine/node-server --push .
+cd server/app && docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t spencerlepine/sdc-nginx --push .
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t spencerlepine/node-server --push .
 
 
 docker buildx build --platform linux/amd64 -t spencerlepine/node-server --push .

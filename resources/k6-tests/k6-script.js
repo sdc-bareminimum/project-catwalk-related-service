@@ -32,7 +32,7 @@ postman[Symbol.for("initial")]({
   options
 });
 
-const host = '54.70.150.169'; // 'localhost' // 52.35.89.230
+const host = '52.35.89.230'; // 'localhost' // 52.35.89.230
 // k6 cloud login
 // k6 cloud k6-script.js
 
