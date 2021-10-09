@@ -15,7 +15,7 @@ This projects constists of a Nginx load balancer, a Node/Express server, and a P
 ## Resources:
 
 - API Documentation: [Atelier API](https://gist.github.com/trentgoing/d69849d6c16b82d279ffc4ecd127f49f)
-- Engineering Journal: [PDF](resources/system_design_project_engineering_journal.pdf) &nbsp; [Google Doc](https://docs.google.com/document/d/1pTTeDCzcKNozd9dljexVn-PrXwzoTBS0hby2dOZ95yw)
+- Engineering Journal: [PDF](resources/system_design_project_engineering_journal.pdf) &nbsp; [Markdown](resources/JOURNAL.md) &nbsp; [Google Doc](https://docs.google.com/document/d/1pTTeDCzcKNozd9dljexVn-PrXwzoTBS0hby2dOZ95yw)
 
 ## 📦 Technologies:
 
@@ -65,18 +65,13 @@ $ npm run dev
 $ npm run test:db:connection
 ```
 
-## TARGET PREFORMANCE
-<<<<<<< HEAD
-
 ## Preformance Results:
+
 #### Target Preformance
-=======
->>>>>>> main
 **Throughput:** 100 RPS
 **Latency:** 2000ms
 **Error rate:** <1% rate
 
-<<<<<<< HEAD
 #### End Results:
 - [x] Throughput: ~400 RPS (Max 5000RPS)
 - [x] Latency: ~70ms
@@ -294,7 +289,6 @@ Response
 - [x]**Throughput:** ~400 RPS (Max 5000RPS)
 - [x]**Latency:** ~70ms
 - [x]**Error rate:** <1% rate
->>>>>>> main
 
 ## More Tools
 
