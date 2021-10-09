@@ -1,4 +1,6 @@
-# TARGET PREFORMANCE
+# Endpoint Preformance
+
+## TARGET PREFORMANCE
 **Throughput:** 100 RPS
 **Latency:** 2000ms
 **Error rate:** <1% rate

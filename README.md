@@ -61,6 +61,16 @@ $ npm run dev
 $ npm run test:db:connection
 ```
 
+## TARGET PREFORMANCE
+**Throughput:** 100 RPS
+**Latency:** 2000ms
+**Error rate:** <1% rate
+
+## Preformance Results:
+- [x]**Throughput:** ~400 RPS (Max 5000RPS)
+- [x]**Latency:** ~70ms
+- [x]**Error rate:** <1% rate
+
 ## More Tools
 
 - [CSV Cleaner](https://github.com/sdc-bareminimum/project-catwalk-related-service/tree/csv-cleaner)
